@@ -66,38 +66,38 @@
 # -----Задание 3 — Excel: студенты и средний балл------
 
 
-class Student:
-    def __init__(self, name):
-        self.name = name
-        self.scores = []
+# class Student:
+#     def __init__(self, name):
+#         self.name = name
+#         self.scores = []
 
-    def add_score(self, score):
-        self.scores.append(score)
+#     def add_score(self, score):
+#         self.scores.append(score)
 
-    def avg(self):
-        if not self.scores:
-            return 0
-        return sum(self.scores) / len(self.scores)
+#     def avg(self):
+#         if not self.scores:
+#             return 0
+#         return sum(self.scores) / len(self.scores)
 
-import pandas as pd
+# import pandas as pd
 
-def student_report():
-    df = pd.read_excel("students2.xlsx")
+# def student_report():
+#     df = pd.read_excel("students2.xlsx")
 
-    report_rows = []
+#     report_rows = []
 
-    for _, row in df.iterrows():
-        student = Student(row["Name"])
-        for col in ["Score1", "Score2", "Score3"]:
-            try:
-                score = float(row[col])
-                student.add_score(score)
-            except (ValueError, TypeError):
-                continue  # пропускаем "грязные" значения
+#     for _, row in df.iterrows():
+#         student = Student(row["Name"])
+#         for col in ["Score1", "Score2", "Score3"]:
+#             try:
+#                 score = float(row[col])
+#                 student.add_score(score)
+#             except (ValueError, TypeError):
+#                 continue  # пропускаем "грязные" значения
 
-        report_rows.append({"Name": student.name, "Avg": student.avg()})
+#         report_rows.append({"Name": student.name, "Avg": student.avg()})
 
-    report_df = pd.DataFrame(report_rows)
-    report_df.to_excel("report_students.xlsx", index=False)
-    print("Отчёт по студентам сформирован")
+#     report_df = pd.DataFrame(report_rows)
+#     report_df.to_excel("report_students.xlsx", index=False)
+#     print("Отчёт по студентам сформирован")
 
